@@ -10,7 +10,9 @@
             </h4>
         </div>
         <div class="col-xs-6 col-lg-4">
-            <h2>Catalogo Clientes</h2>
+            <h4>
+                <a href="{$base_url}/index.php/ProductCatalog">{$data['title_products']}</a>
+            </h4>
         </div>
     </div>
 {/block}

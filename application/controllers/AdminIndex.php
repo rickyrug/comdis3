@@ -18,10 +18,13 @@ class AdminIndex extends MY_Controller {
         $title = $this->lang->line('title_admin');
         $title_clients = $this->lang->line('title_clients');
         $title_variables = $this->lang->line('title_variables');
+        $title_products = $this->lang->line('title_products');
         $data = array(
             'title' => $title,
             'title_clients' => $title_clients,
-            'title_variables' =>$title_variables
+            'title_variables' =>$title_variables,
+            'title_products' => $title_products
+          
         );
         $this->CallViews('AdminIndex/index.tpl', $data);
     }

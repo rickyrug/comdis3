@@ -80,23 +80,31 @@ class MY_Controller extends CI_Controller {
         $this->data['titleaddvariables'] =$this->lang->line('titleadd_variables');
         $this->data['titleeditvariables'] =$this->lang->line('titleedit_variables');
         $this->data['titledelete_registry'] =$this->lang->line('titledelete_registry');
-        
+        $this->data['title_products'] =$this->lang->line('title_products');
         $this->data['save'] =$this->lang->line('save');
         $this->data['return'] =$this->lang->line('return');
         $this->data['delete'] =$this->lang->line('delete');
-        
         $this->data['msg_cli_nvalid_name'] =$this->lang->line('msg_cli_nvalid_name');
         $this->data['msg_cli_required_name'] =$this->lang->line('msg_cli_required_name');
         $this->data['msg_cli_lenght_name'] =$this->lang->line('msg_cli_lenght_name');
         $this->data['msg_cli_regex_name'] =$this->lang->line('msg_cli_regex_name');
-        
         $this->data['msg_cli_nvalid_rfc']   =$this->lang->line('msg_cli_nvalid_rfc');
         $this->data['msg_cli_required_rfc'] =$this->lang->line('msg_cli_required_rfc');
         $this->data['msg_cli_lenght_rfc']   =$this->lang->line('msg_cli_lenght_rfc');
-        
         $this->data['msg_var_lenght_desc']   = $this->lang->line('msg_var_lenght_desc');
         $this->data['msg_var_required_desc'] = $this->lang->line('msg_var_required_desc');
         $this->data['msg_var_nvalid_desc']   = $this->lang->line('msg_var_nvalid_desc');
+        
+        $this->data['msg_ge_lenght_desc']   = $this->lang->line('msg_ge_lenght_desc');
+        $this->data['msg_ge_required_desc'] = $this->lang->line('msg_ge_required_desc');
+        $this->data['msg_ge_nvalid_desc']   = $this->lang->line('msg_ge_nvalid_desc');
+        
+        $this->data['code_label']            = $this->lang->line('code');
+        $this->data['msg_pro_lenght_code']  = $this->lang->line('msg_pro_lenght_code');
+        
+        $this->data['sell_price_label']            = $this->lang->line('sell_price');
+        $this->data['buy_price_label']            = $this->lang->line('buy_price');
+        
     }
 
 }
