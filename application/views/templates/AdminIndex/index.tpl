@@ -6,7 +6,7 @@
         </div>
         <div class="col-xs-6 col-lg-4">
             <h4>
-            <a href="{$base_url}/index.php/CatalogClient">{$data['title_variables']}</a>
+            <a href="{$base_url}/index.php/VariablesCatalog">{$data['title_variables']}</a>
             </h4>
         </div>
         <div class="col-xs-6 col-lg-4">

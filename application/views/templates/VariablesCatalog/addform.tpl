@@ -1,25 +1,22 @@
 {block name=centralContainer}
-    <h1 class="page-header">{$data['title_clients']}<small>{$data['titleaddclient']}</small></h1>
+    <h1 class="page-header">{$data['title_variables']}<small>{$data['titleaddvariables']}</small></h1>
     <div id="msgconfirm" class="alert hidden" role="alert">
         <p></p>
-        <a href="{$base_url}/index.php/CatalogClient" class="alert-link">{$data['return']}</a>
+        <a href="{$base_url}/index.php/VariablesCatalog" class="alert-link">{$data['return']}</a>
     </div>
-    <form id="clientform" action='{$base_url}/index.php/CatalogClient/addConfirmation'>
+    <form id="variableform" action='{$base_url}/index.php/VariablesCatalog/addConfirmation'>
         <div class="form-group">
-            <label for="name">{$data['name_label']}</label>
-            <input  type="text" class="form-control" id="name" name="name" placeholder="{$data['name_label']}">
+            <label for="description">{$data['description_label']}</label>
+            <input  type="text" class="form-control" id="description" name="description" placeholder="{$data['description_label']}">
         </div>
-        <div class="form-group">
-            <label for="rfc">{$data['rfc_label']}</label>
-            <input type="text" class="form-control" id="rfc" name="rfc" placeholder="{$data['rfc_label']}">
-        </div>
+      
         <button id="btnsave" type="submit" class="btn btn-primary">{$data['save']}</button>
-        <a href="{$base_url}/index.php/CatalogClient" class="btn btn-link">{$data['return']}</a>
+        <a href="{$base_url}/index.php/VariablesCatalog" class="btn btn-link">{$data['return']}</a>
     </form>
     <script type="text/javascript" >
         
         $(document).ready(function () {
-    $('#clientform')
+    $('#variableform')
             .bootstrapValidator({
                 message: 'This value is not valid',
                 feedbackIcons: {
@@ -28,42 +25,29 @@
                     validating: 'glyphicon glyphicon-refresh'
                 },
                 fields: {
-                    name: {
-                        message: "{$data['msg_cli_nvalid_name']}",
+                    description: {
+                        message: "{$data['msg_var_nvalid_desc']}",
                         validators: {
                             notEmpty: {
-                                message: "{$data['msg_cli_required_name']}"
+                                message: "{$data['msg_var_required_desc']}"
                             },
                             stringLength: {
-                                min: 5,
-                                max: 30,
-                                message: "{$data['msg_cli_lenght_name']}"
+                                min: 1,
+                                max: 50,
+                                message: "{$data['msg_var_lenght_desc']}"
                             },
                             regexp: {
                                 regexp: /^[a-zA-Z0-9_\.]+$/,
-                                message: "{$data['msg_cli_regex_name']}"
+                                message: "{$data['msg_var_nvalid_desc']}"
                             }
-                        }
-                    },
-                    rfc: {
-                        message: "{$data['msg_cli_nvalid_rfc']}",
-                        validators: {
-                            notEmpty: {
-                                message: "{$data['msg_cli_required_rfc']}"
-                            },
-                            stringLength: {
-                                min: 10,
-                                max: 15,
-                                message: "{$data['msg_cli_lenght_rfc']}"
-                            },
                         }
                     }
                 }
             })
             .on('success.form.bv', function (e) {
                 e.preventDefault();
-                var str = $("#clientform").serialize();
-                var action = $("#clientform").attr('action')
+                var str = $("#variableform").serialize();
+                var action = $("#variableform").attr('action')
 
 
                 $.post(
@@ -72,7 +56,7 @@
                         )
                         .fail(function () {
 
-                            $.get('{$base_url}/index.php/CatalogClient/getError', function (data) {
+                            $.get('{$base_url}/index.php/VariablesCatalog/getError', function (data) {
                                 console.log(data);
                                 alert("Error");
                             });

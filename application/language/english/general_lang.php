@@ -22,7 +22,9 @@ $lang['editconfirm_clients'] = 'Client %s successfully edited!';
 $lang['deleteconfirm_clients'] = 'Client %s successfully deleted!';
 $lang['deleteconfirmq_clients'] = 'Client %s will be deleted!';
 $lang['title_variables']               = 'Variables';
-
+$lang['titleadd_variables'] = 'Add variable';
+$lang['titleedit_variables'] = 'Edit variable';
+$lang['addconfirm_registy'] = 'Registy %s successfully added!';
 
     /*ERRORS*/
     $lang['msg_cli_nvalid_name']   = 'The name is not valid';
@@ -32,6 +34,9 @@ $lang['title_variables']               = 'Variables';
     $lang['msg_cli_nvalid_rfc']    = 'The rfc is not valid';
     $lang['msg_cli_required_rfc']  = 'The RFC is required and can\'t be empty';
     $lang['msg_cli_lenght_rfc']    = 'The RFC must be more than 10 and less than 15 characters long';
+    $lang['msg_var_lenght_desc']    = 'The Description must be more than 5 and less than 50 characters long';
+    $lang['msg_var_required_desc'] = 'The description is required and can\'t be empty';
+    $lang['msg_var_nvalid_desc']   = 'The description is not valid';
 /*END CATALOG CLIENT labels*/
 
 
@@ -45,5 +50,6 @@ $lang['add'] = 'Add';
 $lang['save'] = 'Save'; 
 $lang['return'] = 'Return'; 
 $lang['delete'] = 'Delete'; 
+$lang['description'] = 'Description'; 
 /*END general labels*/
 

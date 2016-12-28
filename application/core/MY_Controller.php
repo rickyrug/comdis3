@@ -56,9 +56,16 @@ class MY_Controller extends CI_Controller {
                         );
     }
     
+     public function getError(){
+        $message = array();
+        $error =  $this->db->error();
+        $message['error'] = $error;
+        echo json_encode($message);
+    }
+    
     private function setLabels(){
        
-        $this->data['title'] = $this->lang->line('title_clients');
+        $this->data['title_clients'] = $this->lang->line('title_clients');
         $this->data['id_label'] =$this->lang->line('id');
         $this->data['name_label'] =$this->lang->line('name');
         $this->data['rfc_label'] =$this->lang->line('rfc');
@@ -68,6 +75,10 @@ class MY_Controller extends CI_Controller {
         $this->data['titleaddclient'] =$this->lang->line('titleadd_clients');
         $this->data['titleeditclient'] =$this->lang->line('titleedit_clients');
         $this->data['titledeleteclient'] =$this->lang->line('titledelete_clients');
+        $this->data['description_label'] =$this->lang->line('description');
+        $this->data['title_variables'] =$this->lang->line('title_variables');
+        $this->data['titleaddvariables'] =$this->lang->line('titleadd_variables');
+        $this->data['titleeditvariables'] =$this->lang->line('titleedit_variables');
         
         $this->data['save'] =$this->lang->line('save');
         $this->data['return'] =$this->lang->line('return');
@@ -81,6 +92,10 @@ class MY_Controller extends CI_Controller {
         $this->data['msg_cli_nvalid_rfc']   =$this->lang->line('msg_cli_nvalid_rfc');
         $this->data['msg_cli_required_rfc'] =$this->lang->line('msg_cli_required_rfc');
         $this->data['msg_cli_lenght_rfc']   =$this->lang->line('msg_cli_lenght_rfc');
+        
+        $this->data['msg_var_lenght_desc']   = $this->lang->line('msg_var_lenght_desc');
+        $this->data['msg_var_required_desc'] = $this->lang->line('msg_var_required_desc');
+        $this->data['msg_var_nvalid_desc']   = $this->lang->line('msg_var_nvalid_desc');
     }
 
 }

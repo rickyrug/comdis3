@@ -45,7 +45,7 @@ class CatalogClient extends MY_Controller implements ICrud{
     }
 
     public function addView() {
-        $this->setLabels();
+      
         $this->CallViews('CatalogClient/addform.tpl', $this->data);
     }
 
@@ -106,12 +106,12 @@ class CatalogClient extends MY_Controller implements ICrud{
        }
     }
 
-    public function getError(){
-        $message = array();
-        $error =  $this->db->error();
-        $message['error'] = $error;
-        echo json_encode($message);
-    }
+//    public function getError(){
+//        $message = array();
+//        $error =  $this->db->error();
+//        $message['error'] = $error;
+//        echo json_encode($message);
+//    }
     
     
 }
