@@ -104,7 +104,12 @@ class MY_Controller extends CI_Controller {
         
         $this->data['sell_price_label']            = $this->lang->line('sell_price');
         $this->data['buy_price_label']            = $this->lang->line('buy_price');
+        $this->data['title_app']            = $this->lang->line('title_app');
+        $this->data['title_admin'] = $this->lang->line('title_admin');
+        $this->data['seach_label'] = $this->lang->line('seach');
         
+        $this->data['title_supplier'] = $this->lang->line('title_supplier');
+        $this->data['edit_label'] = $this->lang->line('edit');
     }
 
 }

@@ -102,6 +102,6 @@ class ProductCatalog extends MY_Controller implements ICrud{
            redirect('ProductCatalog');
        }
     }
-
+    
 //put your code here
 }

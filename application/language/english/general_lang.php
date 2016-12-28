@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+$lang['title_app'] = 'Comdis 3.0';
 $lang['title_sell'] = 'Sells';
 $lang['title_purchase'] = 'Purchase';
 $lang['title_admin'] = 'Administrator';
@@ -46,7 +46,7 @@ $lang['msg_pro_lenght_code'] = 'The field must be more than 4 and less than 10 c
 $lang['msg_ge_lenght_desc'] = 'The field must be more than 1 and less than 255 characters long';
 $lang['msg_ge_required_desc'] = 'The field is required and can\'t be empty';
 $lang['msg_ge_nvalid_desc'] = 'The field is not valid';
-
+$lang['title_supplier']      = 'Supplier Catalog';
 /* END CATALOG CLIENT labels */
 
 
@@ -64,5 +64,7 @@ $lang['description'] = 'Description';
 $lang['code'] = 'Code';
 $lang['sell_price'] = 'Sell Price';
 $lang['buy_price'] = 'Buy Price';
+$lang['seach'] = 'Search';
+$lang['edit'] = 'Edit';
 /*END general labels*/
 

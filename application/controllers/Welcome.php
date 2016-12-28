@@ -5,18 +5,8 @@ class Welcome extends MY_Controller {
 
 	public function index()
 	{
-
-                $title = $this->lang->line('title_sell');
-                $data = array(
-                        'title' => $title 
-                );
-                $this->CallViews('index.tpl',$data);
-
+                $this->CallViews('index.tpl',$this->data);
 	}
         
-        public function smar(){
-            
-            $this->CallViews('index.tpl');
-        }
-     
+
 }

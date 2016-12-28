@@ -5,7 +5,7 @@
         <li><a href="{$data['menu']['sells']}">Sells</a></li>
         <li><a href="{$data['menu']['purchase']}">Purchases</a></li>
     </ul>
-    <ul class="nav nav-sidebar">
+   <!-- <ul class="nav nav-sidebar">
         <li><a href="">Nav item</a></li>
         <li><a href="">Nav item again</a></li>
         <li><a href="">One more nav</a></li>
@@ -16,5 +16,5 @@
         <li><a href="">Nav item again</a></li>
         <li><a href="">One more nav</a></li>
         <li><a href="">Another nav item</a></li>
-    </ul>
+    </ul>-->
 {/block}

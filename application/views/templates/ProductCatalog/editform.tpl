@@ -1,5 +1,5 @@
 {block name=centralContainer}
-    <h1 class="page-header">{$data['title_products']}<small>{$data['add_label']}</small></h1>
+    <h1 class="page-header">{$data['title_products']}<small>{$data['edit_label']}</small></h1>
     <div id="msgconfirm" class="alert hidden" role="alert">
         <p></p>
         <a href="{$base_url}/index.php/ProductCatalog" class="alert-link">{$data['return']}</a>
