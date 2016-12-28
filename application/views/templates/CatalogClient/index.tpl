@@ -26,6 +26,7 @@
                 <th>{$data['name_label']}</th>
                 <th>{$data['rfc_label']}</th>
                 <th>{$data['status_label']}</th>
+                <th>{$data['config_prod_prices_label']}</th>
                 <th>{$data['actions_label']}</th>
             </tr>
         </thead>
@@ -36,14 +37,21 @@
                     <td>{$row->name}</td>
                     <td>{$row->rfc}</td>
                     <td>{$row->status}</td>
+                    
+                    <td>
+                        <a href="{$base_url}/index.php/ProductCatalog/productPriceConfig/{$row->idclient}"type="button"  class="btn btn-default" title="{$data['config_prod_prices_label']}" >
+                            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                        </a>
+                    </td>
                     <td>
                         <a href="{$base_url}/index.php/CatalogClient/updateView/{$row->idclient}"
                            class="btn btn-default">
                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                         </a>
-                           <a href="{$base_url}/index.php/CatalogClient/deleteView/{$row->idclient}"type="button"  class="btn btn-default">
+                        <a href="{$base_url}/index.php/CatalogClient/deleteView/{$row->idclient}"type="button"  class="btn btn-default">
                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                        </a
+                        </a>
+                        
                     </td>
                 </tr>
             {/foreach}

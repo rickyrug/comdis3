@@ -47,6 +47,7 @@ $lang['msg_ge_lenght_desc'] = 'The field must be more than 1 and less than 255 c
 $lang['msg_ge_required_desc'] = 'The field is required and can\'t be empty';
 $lang['msg_ge_nvalid_desc'] = 'The field is not valid';
 $lang['title_supplier']      = 'Supplier Catalog';
+$lang['config_prod_prices']      = 'Product prices';
 /* END CATALOG CLIENT labels */
 
 
