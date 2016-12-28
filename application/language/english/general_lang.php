@@ -66,5 +66,6 @@ $lang['sell_price'] = 'Sell Price';
 $lang['buy_price'] = 'Buy Price';
 $lang['seach'] = 'Search';
 $lang['edit'] = 'Edit';
+$lang['home'] = 'Home';
 /*END general labels*/
 

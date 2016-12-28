@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-28 11:10:34
+/* Smarty version 3.1.30, created on 2016-12-28 17:20:06
   from "C:\Users\60044723\xampp\htdocs\comdis\application\views\templates\CatalogClient\index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5863f20a0f8203_41749739',
+  'unifunc' => 'content_586448a6964939_33448387',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '16bdcb3a0cd6817018ef9c0dab8da71aa8e3cbf6' => 
     array (
       0 => 'C:\\Users\\60044723\\xampp\\htdocs\\comdis\\application\\views\\templates\\CatalogClient\\index.tpl',
-      1 => 1482945032,
+      1 => 1482967151,
       2 => 'file',
     ),
   ),
@@ -20,15 +20,15 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5863f20a0f8203_41749739 (Smarty_Internal_Template $_smarty_tpl) {
+function content_586448a6964939_33448387 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_30955863f20a0ec661_62694883', 'centralContainer');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_10548586448a6958d88_44637145', 'centralContainer');
 ?>
 
 <?php }
 /* {block 'centralContainer'} */
-class Block_30955863f20a0ec661_62694883 extends Smarty_Internal_Block
+class Block_10548586448a6958d88_44637145 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -37,6 +37,12 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 </h1>
     <div id="toolbar">
         <div class="form-inline" role="form">
+            <div class="form-group">
+                <a href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
+/index.php/Adminindex" class="btn btn-default">
+                    <span class="glyphicon glyphicon-home" aria-hidden="true"></span><?php echo $_smarty_tpl->tpl_vars['data']->value['home_label'];?>
+</a>
+            </div>
             <div class="form-group">
                 <a href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
 /index.php/CatalogClient/addView" class="btn btn-default"><?php echo $_smarty_tpl->tpl_vars['data']->value['add_label'];?>

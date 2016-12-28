@@ -3,6 +3,10 @@
     <div id="toolbar">
         <div class="form-inline" role="form">
             <div class="form-group">
+                <a href="{$base_url}/index.php/Adminindex" class="btn btn-default">
+                    <span class="glyphicon glyphicon-home" aria-hidden="true"></span>{$data['home_label']}</a>
+            </div>
+            <div class="form-group">
                 <a href="{$base_url}/index.php/CatalogClient/addView" class="btn btn-default">{$data['add_label']}</a>
             </div>
         </div>

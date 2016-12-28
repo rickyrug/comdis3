@@ -110,6 +110,7 @@ class MY_Controller extends CI_Controller {
         
         $this->data['title_supplier'] = $this->lang->line('title_supplier');
         $this->data['edit_label'] = $this->lang->line('edit');
+        $this->data['home_label'] = $this->lang->line('home');
     }
 
 }
