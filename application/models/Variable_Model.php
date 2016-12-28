@@ -73,7 +73,7 @@ class Variable_Model extends CI_Model {
 
         $data = array(
             'description' => $p_description,
-            'modification_by' => $p_modified_by,
+            'modified_by' => $p_modified_by,
             'modification_date' => standard_date('DATE_ATOM', time())
         );
 

@@ -79,6 +79,7 @@ class MY_Controller extends CI_Controller {
         $this->data['title_variables'] =$this->lang->line('title_variables');
         $this->data['titleaddvariables'] =$this->lang->line('titleadd_variables');
         $this->data['titleeditvariables'] =$this->lang->line('titleedit_variables');
+        $this->data['titledelete_registry'] =$this->lang->line('titledelete_registry');
         
         $this->data['save'] =$this->lang->line('save');
         $this->data['return'] =$this->lang->line('return');

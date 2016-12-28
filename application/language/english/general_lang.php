@@ -24,8 +24,11 @@ $lang['deleteconfirmq_clients'] = 'Client %s will be deleted!';
 $lang['title_variables']               = 'Variables';
 $lang['titleadd_variables'] = 'Add variable';
 $lang['titleedit_variables'] = 'Edit variable';
-$lang['addconfirm_registy'] = 'Registy %s successfully added!';
-
+$lang['addconfirm_registy'] = 'Registry %s successfully added!';
+$lang['editconfirm_registy'] = 'Registry %s successfully edited!';
+$lang['deleteconfirmq_registry'] = 'Registry %s will be deleted!';
+$lang['deleteconfirm_registry'] = 'Registry %s successfully deleted!';
+$lang['titledelete_registry'] = 'Delete';
     /*ERRORS*/
     $lang['msg_cli_nvalid_name']   = 'The name is not valid';
     $lang['msg_cli_required_name'] = 'The name is required and can\'t be empty';

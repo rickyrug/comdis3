@@ -17,4 +17,5 @@ interface ICrud {
     public function updateView($p_id);
     public function updateConfirmation();
     public function deleteView($p_id);
+   public function deleteConfirmation();
 }
