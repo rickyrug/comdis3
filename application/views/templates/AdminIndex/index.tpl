@@ -8,7 +8,7 @@
                             <h3>Customers</h3>
                         </a>
                         <a href="{$base_url}/index.php/CatalogClient" class="list-group-item">{$data['title_clients']}</a>
-                        <a href="{$base_url}/index.php/ProductCatalog/productPriceConfig" class="list-group-item">{$data['config_prod_prices_label']}</a>
+                        <a href="{$base_url}/index.php/ProductPriceClient" class="list-group-item">{$data['config_prod_prices_label']}</a>
             </div>
             
         </div>

@@ -103,8 +103,6 @@ class ProductCatalog extends MY_Controller implements ICrud{
        }
     }
     
-    public function productPriceConfig($p_idclient=null, $p_idproduct=null){
-     
-    }
+    
 //put your code here
 }

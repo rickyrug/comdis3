@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-10-05 21:34:22
+/* Smarty version 3.1.30, created on 2016-12-28 22:06:13
   from "/Applications/XAMPP/xamppfiles/htdocs/comdis_dev/application/views/templates/CatalogClient/index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_57f5b82e99a7e4_47291248',
+  'unifunc' => 'content_58648bb58b2ef6_09376232',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bd5bed5dfc4ead6a767add5117f4ed6c018a9872' => 
     array (
       0 => '/Applications/XAMPP/xamppfiles/htdocs/comdis_dev/application/views/templates/CatalogClient/index.tpl',
-      1 => 1475721244,
+      1 => 1482984289,
       2 => 'file',
     ),
   ),
@@ -20,23 +20,29 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_57f5b82e99a7e4_47291248 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58648bb58b2ef6_09376232 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_164697452457f5b82e996893_13785823', 'centralContainer');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_16714036558648bb58acc44_07341571', 'centralContainer');
 ?>
 
 <?php }
 /* {block 'centralContainer'} */
-class Block_164697452457f5b82e996893_13785823 extends Smarty_Internal_Block
+class Block_16714036558648bb58acc44_07341571 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
-    <h1 class="page-header"><?php echo $_smarty_tpl->tpl_vars['data']->value['title'];?>
+    <h1 class="page-header"><?php echo $_smarty_tpl->tpl_vars['data']->value['title_clients'];?>
 </h1>
     <div id="toolbar">
         <div class="form-inline" role="form">
+            <div class="form-group">
+                <a href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
+/index.php/Adminindex" class="btn btn-default">
+                    <span class="glyphicon glyphicon-home" aria-hidden="true"></span><?php echo $_smarty_tpl->tpl_vars['data']->value['home_label'];?>
+</a>
+            </div>
             <div class="form-group">
                 <a href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
 /index.php/CatalogClient/addView" class="btn btn-default"><?php echo $_smarty_tpl->tpl_vars['data']->value['add_label'];?>
@@ -82,6 +88,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['row']->value) {
 </td>
                     <td><?php echo $_smarty_tpl->tpl_vars['row']->value->status;?>
 </td>
+                    
+                   
                     <td>
                         <a href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
 /index.php/CatalogClient/updateView/<?php echo $_smarty_tpl->tpl_vars['row']->value->idclient;?>
@@ -89,11 +97,12 @@ foreach ($_from as $_smarty_tpl->tpl_vars['row']->value) {
                            class="btn btn-default">
                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                         </a>
-                           <a href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
 /index.php/CatalogClient/deleteView/<?php echo $_smarty_tpl->tpl_vars['row']->value->idclient;?>
 "type="button"  class="btn btn-default">
                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                        </a
+                        </a>
+                        
                     </td>
                 </tr>
             <?php

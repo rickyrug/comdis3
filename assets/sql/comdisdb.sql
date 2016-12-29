@@ -97,7 +97,7 @@ CREATE TABLE `clients` (
   `modification_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`idclient`),
   UNIQUE KEY `clientsuq` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -195,7 +195,7 @@ CREATE TABLE `product` (
   `modification_date` datetime DEFAULT NULL,
   `modification_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`idproduct`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -204,6 +204,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` VALUES (1,'1234','balon de papel','AC',90.0000000000,80.0000000000,'2016-12-28 22:07:16',1,'2016-12-28 22:07:24',1);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -384,12 +385,12 @@ CREATE TABLE `supplier` (
   `name` varchar(255) NOT NULL,
   `rfc` varchar(255) DEFAULT NULL,
   `status` varchar(2) NOT NULL DEFAULT 'AC',
-  `create_data` datetime NOT NULL,
+  `create_date` datetime NOT NULL,
   `create_by` int(11) NOT NULL,
   `modification_date` datetime DEFAULT NULL,
   `modification_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`idsupplier`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -398,6 +399,7 @@ CREATE TABLE `supplier` (
 
 LOCK TABLES `supplier` WRITE;
 /*!40000 ALTER TABLE `supplier` DISABLE KEYS */;
+INSERT INTO `supplier` VALUES (1,'Lozar','1233456678','AC','2016-12-28 22:11:12',1,NULL,NULL);
 /*!40000 ALTER TABLE `supplier` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -450,7 +452,7 @@ CREATE TABLE `variables` (
   `modification_date` datetime DEFAULT NULL,
   `modified_by` int(11) DEFAULT NULL,
   PRIMARY KEY (`idvariable`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -459,6 +461,7 @@ CREATE TABLE `variables` (
 
 LOCK TABLES `variables` WRITE;
 /*!40000 ALTER TABLE `variables` DISABLE KEYS */;
+INSERT INTO `variables` VALUES (1,'Test1','AC','2016-12-28 22:06:33',1,'2016-12-28 22:06:41',1);
 /*!40000 ALTER TABLE `variables` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -471,4 +474,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-12-27 23:18:28
+-- Dump completed on 2016-12-28 22:23:59
