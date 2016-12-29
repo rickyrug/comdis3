@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-28 17:56:13
+/* Smarty version 3.1.30, created on 2016-12-28 17:57:17
   from "C:\Users\60044723\xampp\htdocs\comdis\application\views\templates\CatalogClient\index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5864511d7ccf72_96269618',
+  'unifunc' => 'content_5864515d7b0b33_22746241',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '16bdcb3a0cd6817018ef9c0dab8da71aa8e3cbf6' => 
     array (
       0 => 'C:\\Users\\60044723\\xampp\\htdocs\\comdis\\application\\views\\templates\\CatalogClient\\index.tpl',
-      1 => 1482969306,
+      1 => 1482969435,
       2 => 'file',
     ),
   ),
@@ -20,15 +20,15 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5864511d7ccf72_96269618 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5864515d7b0b33_22746241 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_313565864511d7c13d5_28924320', 'centralContainer');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_14115864515d7a8e11_92560152', 'centralContainer');
 ?>
 
 <?php }
 /* {block 'centralContainer'} */
-class Block_313565864511d7c13d5_28924320 extends Smarty_Internal_Block
+class Block_14115864515d7a8e11_92560152 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -69,8 +69,6 @@ public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 </th>
                 <th><?php echo $_smarty_tpl->tpl_vars['data']->value['status_label'];?>
 </th>
-                <th><?php echo $_smarty_tpl->tpl_vars['data']->value['config_prod_prices_label'];?>
-</th>
                 <th><?php echo $_smarty_tpl->tpl_vars['data']->value['actions_label'];?>
 </th>
             </tr>
@@ -91,14 +89,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['row']->value) {
                     <td><?php echo $_smarty_tpl->tpl_vars['row']->value->status;?>
 </td>
                     
-                    <td>
-                        <a href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
-/index.php/ProductCatalog/productPriceConfig/<?php echo $_smarty_tpl->tpl_vars['row']->value->idclient;?>
-"type="button"  class="btn btn-default" title="<?php echo $_smarty_tpl->tpl_vars['data']->value['config_prod_prices_label'];?>
-" >
-                            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-                        </a>
-                    </td>
+                   
                     <td>
                         <a href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
 /index.php/CatalogClient/updateView/<?php echo $_smarty_tpl->tpl_vars['row']->value->idclient;?>

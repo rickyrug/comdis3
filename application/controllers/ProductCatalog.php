@@ -104,16 +104,7 @@ class ProductCatalog extends MY_Controller implements ICrud{
     }
     
     public function productPriceConfig($p_idclient=null, $p_idproduct=null){
-        
-       
-        
-        if($p_idclient == NULL){
-            echo "cliente";
-        }
-        if($p_idproduct != NULL){
-            echo "null ok";
-            
-        }
+     
     }
 //put your code here
 }
