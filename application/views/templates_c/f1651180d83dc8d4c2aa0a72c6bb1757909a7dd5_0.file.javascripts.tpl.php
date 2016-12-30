@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-29 12:31:52
+/* Smarty version 3.1.30, created on 2016-12-29 18:08:39
   from "C:\Users\60044723\xampp\htdocs\comdis\application\views\templates\layout\javascripts.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5865569843eb32_27222913',
+  'unifunc' => 'content_5865a587b8b3c7_62392977',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,13 +20,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5865569843eb32_27222913 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5865a587b8b3c7_62392977 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_75755865569843aca1_20772875', 'javascripts');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_63995865a587b8b3c4_18849882', 'javascripts');
 }
 /* {block 'javascripts'} */
-class Block_75755865569843aca1_20772875 extends Smarty_Internal_Block
+class Block_63995865a587b8b3c4_18849882 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>

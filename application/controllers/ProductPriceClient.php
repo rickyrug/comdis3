@@ -72,6 +72,18 @@ class ProductPriceClient extends MY_Controller implements ICrud{
         $this->CallViews('ProductPriceClient/addform.tpl', $this->data);
     }
 
+    public function addViewByClient($p_idclient) {
+        $clientsList = $this->Client_Model->find_all_entries();
+        $productList = $this->Product_Model->find_all_entries();
+                
+        $this->smarty->assign('client_options',generateClientsDropdownInformation($clientsList));
+        $this->smarty->assign('product_options',  generateProductDropdownInformation($productList));
+        $this->smarty->assign('customer_id',  $p_idclient);
+        
+        
+        $this->CallViews('ProductPriceClient/addform.tpl', $this->data);
+    }
+    
     public function deleteConfirmation() {
         
     }
@@ -102,7 +114,6 @@ class ProductPriceClient extends MY_Controller implements ICrud{
       public function validPrice($p_client, $p_product,$p_duedate){
        $maxdate = $this->ClientPrices_Model->get_max_date($p_client, $p_product);
        if(count($maxdate) == 1){
-           echo $p_duedate;
          $fechanueva =  strtotime($p_duedate);
          $fechavieja =  strtotime($maxdate[0]->valid_date_due);
          $diffechas = $fechavieja - $fechanueva;

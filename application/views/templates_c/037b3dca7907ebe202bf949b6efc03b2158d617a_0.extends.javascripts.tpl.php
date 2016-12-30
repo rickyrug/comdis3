@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-29 12:55:13
+/* Smarty version 3.1.30, created on 2016-12-29 18:13:16
   from "C:\Users\60044723\xampp\htdocs\comdis\application\views\templates\layout\javascripts.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58655c11043a54_13616178',
+  'unifunc' => 'content_5865a69cd08034_01220473',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:layout.tpl' => 1,
   ),
 ),false)) {
-function content_58655c11043a54_13616178 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5865a69cd08034_01220473 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, true);
 $_smarty_tpl->_subTemplateRender("file:layout/javascripts.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 2, false);

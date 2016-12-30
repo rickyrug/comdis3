@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-29 12:50:15
+/* Smarty version 3.1.30, created on 2016-12-29 18:08:39
   from "C:\Users\60044723\xampp\htdocs\comdis\application\views\templates\layout\head.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58655ae7941487_87922253',
+  'unifunc' => 'content_5865a587e799c2_63048143',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,13 +20,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58655ae7941487_87922253 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5865a587e799c2_63048143 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_2159958655ae7941480_89053359', 'head');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_239555865a587e71cb0_40822399', 'head');
 }
 /* {block 'head'} */
-class Block_2159958655ae7941480_89053359 extends Smarty_Internal_Block
+class Block_239555865a587e71cb0_40822399 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
