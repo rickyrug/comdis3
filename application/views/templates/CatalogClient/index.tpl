@@ -46,7 +46,9 @@
                         <a href="{$base_url}/index.php/CatalogClient/deleteView/{$row->idclient}"type="button"  class="btn btn-default">
                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                         </a>
-                        
+                        <a href="{$base_url}/index.php/ProductPriceClient/addViewByClient/{$row->idclient}"type="button"  class="btn btn-default">
+                            <span class="glyphicon  glyphicon-list" aria-hidden="true"></span>
+                        </a>
                     </td>
                 </tr>
             {/foreach}

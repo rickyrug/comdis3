@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-12-29 18:13:16
+/* Smarty version 3.1.30, created on 2016-12-30 09:35:11
   from "C:\Users\60044723\xampp\htdocs\comdis\application\views\templates\CatalogClient\index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5865a69cdfe3b8_73572139',
+  'unifunc' => 'content_58667eaf3256c7_02648940',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '16bdcb3a0cd6817018ef9c0dab8da71aa8e3cbf6' => 
     array (
       0 => 'C:\\Users\\60044723\\xampp\\htdocs\\comdis\\application\\views\\templates\\CatalogClient\\index.tpl',
-      1 => 1482969435,
+      1 => 1483112107,
       2 => 'file',
     ),
   ),
@@ -20,15 +20,15 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5865a69cdfe3b8_73572139 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58667eaf3256c7_02648940 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_loadInheritance();
 $_smarty_tpl->inheritance->init($_smarty_tpl, false);
-$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_287335865a69cdf66a8_45896450', 'centralContainer');
+$_smarty_tpl->inheritance->instanceBlock($_smarty_tpl, 'Block_1588158667eaf31d9a6_98391319', 'centralContainer');
 ?>
 
 <?php }
 /* {block 'centralContainer'} */
-class Block_287335865a69cdf66a8_45896450 extends Smarty_Internal_Block
+class Block_1588158667eaf31d9a6_98391319 extends Smarty_Internal_Block
 {
 public function callBlock(Smarty_Internal_Template $_smarty_tpl) {
 ?>
@@ -102,7 +102,11 @@ foreach ($_from as $_smarty_tpl->tpl_vars['row']->value) {
 "type="button"  class="btn btn-default">
                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                         </a>
-                        
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
+/index.php/ProductPriceClient/addViewByClient/<?php echo $_smarty_tpl->tpl_vars['row']->value->idclient;?>
+"type="button"  class="btn btn-default">
+                            <span class="glyphicon  glyphicon-list" aria-hidden="true"></span>
+                        </a>
                     </td>
                 </tr>
             <?php
