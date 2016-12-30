@@ -25,13 +25,19 @@ class ClientPrices_Model extends CI_Model{
         parent::__construct();
     }
     
-    public function find_all_entries($p_number = null) {
-        $query = null;
-        if (!is_null($p_number)) {
-            $query = $this->db->get($this->table, $p_number);
-        } else {
-            $query = $this->db->get($this->table);
-        }
+    public function find_all_entries() {
+        
+            $sql = 'SELECT clients_prices.idclients_prices,clients_prices.price,
+                           clients_prices.valid_date_due,clients.name as idclient,
+                           CONCAT(product.code, " - " ,product.name)  as idproduct
+                    FROM clients_prices  
+                    INNER JOIN clients    
+                    ON clients_prices.idclient = clients.idclient
+                    INNER JOIN product 
+                    ON clients_prices.idproduct = product.idproduct';
+            $query = $this->db->query($sql);
+           
+        
         return $query->result();
     }
     
@@ -114,4 +120,13 @@ class ClientPrices_Model extends CI_Model{
         );
     }
     
+    public function get_max_date($p_client, $p_product){
+        $this->db->select_max('valid_date_due');
+        $this->db->from($this->table);
+        $this->db->where('idclient', $p_client);
+        $this->db->where('idproduct', $p_product);
+        
+        $query = $this->db->get();
+        return $query->result();
+    }
 }

@@ -68,5 +68,9 @@ $lang['buy_price'] = 'Buy Price';
 $lang['seach'] = 'Search';
 $lang['edit'] = 'Edit';
 $lang['home'] = 'Home';
+$lang['client'] = 'Client';
+$lang['product'] = 'Product';
+$lang['validdatedue'] = 'Valid date due';
+$lang['price'] = 'Price';
 /*END general labels*/
 

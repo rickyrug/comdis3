@@ -112,6 +112,11 @@ class MY_Controller extends CI_Controller {
         $this->data['edit_label'] = $this->lang->line('edit');
         $this->data['home_label'] = $this->lang->line('home');
         $this->data['config_prod_prices_label'] = $this->lang->line('config_prod_prices');
+        
+        $this->data['client_label'] = $this->lang->line('client');
+        $this->data['product_label'] = $this->lang->line('product');
+        $this->data['validdatedue_label'] = $this->lang->line('validdatedue');
+        $this->data['price_label'] = $this->lang->line('price');
     }
 
 }
