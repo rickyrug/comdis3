@@ -127,4 +127,10 @@ class ProductPriceClient extends MY_Controller implements ICrud{
        }
        
     }
+    
+     public function getData($p_message = null) {
+        $list = $this->ClientPrices_Model->find_all_entries();
+        echo json_encode($list);
+       // $this->CallViews('ProductPriceClient/index.tpl', $this->data);
+    }
 }

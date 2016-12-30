@@ -14,30 +14,30 @@
 
                 </div>
             </div>
-
+                 
             <table 
                 data-toggle="table"
-                data-sort-name="ID"
                 data-search="true"
                 data-pagination="true"
-                data-page-size="5"
+                
                 data-toolbar="#toolbar"
+                data-unique-id="idclients_prices"
                 id="clientstbl"
                 >
                 <thead>
                     <tr>
-                        <th data-field="ID" data-sortable="true" >{$data['id_label']}</th>
-                        <th>{$data['client_label']}</th>
-                        <th>{$data['product_label']}</th>
-                        <th data-sortable="true">{$data['validdatedue_label']}</th>
-                        <th>{$data['price_label']}</th>
-                        <th>{$data['actions_label']}</th>
+                        <th data-field="idclients_prices"  >{$data['id_label']}</th>
+                        <th data-field="idclient">{$data['client_label']}</th>
+                        <th data-field="idproduct">{$data['product_label']}</th>
+                        <th data-field="valid_date_due" >{$data['validdatedue_label']}</th>
+                        <th data-field="price">{$data['price_label']}</th>
+                        <th >{$data['actions_label']}</th>
                     </tr>
                 </thead>
-                <tbody>
+                   <tbody>
                     {foreach from=$data['clientspricesList'] item=row}
                         <tr>
-                            <td id='idclients_prices'>{$row->idclients_prices}</td>
+                            <td>{$row->idclients_prices}</td>
                             <td>{$row->idclient}</td>
                             <td>{$row->idproduct}</td>
                             <td>{$row->valid_date_due|date_format:"%Y-%m-%d"}</td>
@@ -59,8 +59,30 @@
         </div>
 
     </div>
-                       
+  {literal}
+    <script type="text/javascript">
+        //turn to inline mode
+        var $table = $("#clientstbl");
+        
+      /*  $(document).ready(function(){
+            $.get("http://localhost/comdis//index.php/ProductPriceClient/getData" ).done(function(data){
+                 var jsondata = jQuery.parseJSON(data);
 
+                $("#clientstbl").bootstrapTable("load", jsondata );
+                console.log(jsondata);
+             //   console.log(info);
+            });
+        });*/
+        
+         $(document).on("click", "#clientstbl tr", function (event) {
+               console.log($(this "[data-uniqueid]");   
+               // var table_row = $("#clientstbl").find('[data-uniqueid="' + unique_id + '"]');
+              var driver_data = $('#clientstbl').bootstrapTable('getRowByUniqueId', 1);
+               
+                console.log(driver_data.idclients_prices);
+            });
 
+    </script>           
+    {/literal}
 {/block}
 

@@ -19,11 +19,15 @@
         
        
         <link rel="stylesheet" href="{$base_url}assets/chosen/chosen.css">
+
         
         <script type="text/javascript" src="{$base_url}assets/jquery/jquery.js"></script>
         <script type="text/javascript" src="{$base_url}assets/jqueryvalidatoren/js/bootstrapValidator.js"></script>
         <script src="{$base_url}assets/chosen/chosen.jquery.min.js" type="text/javascript"></script>
         <script src="{$base_url}assets/chosen/docsupport/prism.js" type="text/javascript" charset="utf-8"></script>
+  
+        
+        
     </head>
 
 {/block}
