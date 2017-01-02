@@ -72,5 +72,7 @@ $lang['client'] = 'Client';
 $lang['product'] = 'Product';
 $lang['validdatedue'] = 'Valid date due';
 $lang['price'] = 'Price';
+$lang['third_parties'] = 'Third parties';
+$lang['configuration'] = 'Configuration';
 /*END general labels*/
 

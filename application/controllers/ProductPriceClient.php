@@ -15,6 +15,8 @@ require_once( APPPATH.'/interfaces/ICrud.php' );
 
 class ProductPriceClient extends MY_Controller implements ICrud{
     
+    private $user;
+    
     public function __construct() {
         parent::__construct();
         $this->load->model('Client_Model');
@@ -85,11 +87,29 @@ class ProductPriceClient extends MY_Controller implements ICrud{
     }
     
     public function deleteConfirmation() {
+        $idclients_prices = $_POST['idclients_prices'];
         
+        $result = $this->ClientPrices_Model->delete_entry($idclients_prices);
+        
+        $confirm_msg ="";
+        if($result['err']['code']=== 0){
+            $confirm_msg = sprintf($this->lang->line('deleteconfirm_registry'),$idclients_prices);
+        }
+        $result['confirm_msg'] = $confirm_msg;
+        echo json_encode($result);
     }
 
     public function deleteView($p_id) {
+        $var_productprice = $this->ClientPrices_Model->find_by_key($p_id);
         
+         if(count($var_productprice) == 1){
+          // $this->setLabels();
+           $this->data['productprice'] = $var_productprice[0];
+           $this->data['titledeleteq'] = sprintf( $this->lang->line('deleteconfirmq_registry'),$this->data['productprice']->idclients_prices);
+           $this->CallViews('ProductPriceClient/deleteConfirmation.tpl', $this->data);
+       }else{
+           redirect('ProductPriceClient');
+       }
     }
 
     public function index($p_message = null) {
@@ -98,11 +118,29 @@ class ProductPriceClient extends MY_Controller implements ICrud{
     }
 
     public function updateConfirmation() {
+        $p_validdatedue   = $_POST['validdatedue'];
+        $p_price          = $_POST['price'];
+        $p_idproductprice = $_POST['idproductprice'];
         
+        $result = $this->ClientPrices_Model->updatepricedate_entry($p_idproductprice,$p_price,$p_validdatedue, $this->user);
+        
+        $confirm_msg ="";
+        if($result['err']['code']=== 0){
+            $confirm_msg = sprintf($this->lang->line('editconfirm_registy'),$p_idproductprice);
+        }
+        $result['confirm_msg'] = $confirm_msg;
+        echo json_encode($result);
     }
 
     public function updateView($p_id) {
+       $productpriceList = $this->ClientPrices_Model->find_by_key($p_id);
         
+        if(count($productpriceList) > 0){
+           $this->data['productprice'] = $productpriceList[0];
+           $this->CallViews('ProductPriceClient/editform.tpl', $this->data);
+        }else{
+            redirect('ProductPriceClient');
+        }
     }
 
     public function getProductPricesByClientid($p_id){

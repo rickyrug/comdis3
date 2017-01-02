@@ -43,11 +43,11 @@
                             <td>{$row->valid_date_due|date_format:"%Y-%m-%d"}</td>
                             <td>{$row->price}</td>
                             <td>
-                                <a href="{$base_url}/index.php/ProductPriceClient/updateView/{$row->idclient}"
+                                <a href="{$base_url}/index.php/ProductPriceClient/updateView/{$row->idclients_prices}"
                                    class="btn btn-default">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </a>
-                                <a href="{$base_url}/index.php/ProductPriceClient/deleteView/{$row->idclient}"type="button"  class="btn btn-default">
+                                <a href="{$base_url}/index.php/ProductPriceClient/deleteView/{$row->idclients_prices}"type="button"  class="btn btn-default">
                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                 </a>
 

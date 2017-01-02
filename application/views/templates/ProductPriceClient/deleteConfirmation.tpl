@@ -1,24 +1,24 @@
 {block name=centralContainer}
-    <h1 class="page-header">{$data['title_products']}<small>{$data['titledelete_registry']}</small></h1>
+    <h1 class="page-header">{$data['config_prod_prices_label']}<small>{$data['titledelete_registry']}</small></h1>
     <div id="msgconfirm" class="alert hidden" role="alert">
         <p></p>
-        <a href="{$base_url}/index.php/ProductCatalog" class="alert-link">{$data['return']}</a>
+        <a href="{$base_url}/index.php/ProductPriceClient" class="alert-link">{$data['return']}</a>
     </div>
     <div class="jumbotron">
         <h3>{$data['titledeleteq']}</h3>
-        <input type="hidden" id="idproduct" name="idproduct" value="{$data['product']->idproduct}" />
+        <input type="hidden" id="idclients_prices" name="idclients_prices" value="{$data['productprice']->idclients_prices}" />
         <p>
             <button id="btndelete" class="btn btn-primary btn-lg" href="#" role="button">{$data['delete']}</button>
-            <a class="btn btn-default btn-lg" href="{$base_url}/index.php/ProductCatalog"  role="button">{$data['return']}</a>
+            <a class="btn btn-default btn-lg" href="{$base_url}/index.php/ProductPriceClient"  role="button">{$data['return']}</a>
         </p>
     </div>
     <script type="text/javascript">
         $('#btndelete').click(function(){
-            var idproduct =$("#idproduct").val();
+            var idclients_prices =$("#idclients_prices").val();
             var show = {};
-            show['idproduct'] = idproduct;
+            show['idclients_prices'] = idclients_prices;
             $.post(
-                    "{$base_url}/index.php/ProductCatalog/deleteConfirmation",
+                    "{$base_url}/index.php/ProductPriceClient/deleteConfirmation",
                     show
                    ).fail(function(data){
                     alert("ERRROR");   

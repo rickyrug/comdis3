@@ -110,6 +110,29 @@ class ClientPrices_Model extends CI_Model{
         );
     }
     
+    public function updatepricedate_entry($p_idclients_prices,$p_price,$p_validduedate, $p_modified_by){
+         $data = array(
+            'creation_by'   => $p_modified_by,
+            'creation_date' => standard_date('DATE_ATOM', time()),
+            'price'             => $p_price,
+            'valid_date_due'    => $p_validduedate
+        );
+            
+        $this->db->where('idclients_prices', $p_idclients_prices);
+        if($this->db->update($this->table, $data)){
+            $str = $this->db->last_query();
+            $err = $this->db->error();
+        }else{
+            $str = $this->db->last_query();
+            $err = $this->db->error();
+        }
+        
+        return array(
+            "lastquery" => $str,
+            "err" => $err
+        );
+    }
+    
     public function delete_entry($p_idkey){
         $this->db->where('idclients_prices', $p_idkey);
         $this->db->delete($this->table);
@@ -128,5 +151,25 @@ class ClientPrices_Model extends CI_Model{
         
         $query = $this->db->get();
         return $query->result();
+    }
+    
+    public function find_by_key($p_key){
+        $sql = 'SELECT clients_prices.idclients_prices,clients_prices.price,
+                           clients_prices.valid_date_due,clients.name as clientname,
+                           CONCAT(product.code, " - " ,product.name)  as productname,
+                           clients_prices.idclient,clients_prices.idproduct
+                    FROM clients_prices  
+                    INNER JOIN clients    
+                    ON clients_prices.idclient = clients.idclient
+                    INNER JOIN product 
+                    ON clients_prices.idproduct = product.idproduct
+                    WHERE clients_prices.idclients_prices = %d';
+        $sqlf = sprintf($sql,$p_key);
+        $query = $this->db->query($sqlf);
+//        $this->db->from($this->table);
+//        $this->db->where('idclients_prices',$p_key);
+//        $query = $this->db->get();
+        return $query->result();
+        
     }
 }

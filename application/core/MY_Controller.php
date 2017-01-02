@@ -117,6 +117,8 @@ class MY_Controller extends CI_Controller {
         $this->data['product_label'] = $this->lang->line('product');
         $this->data['validdatedue_label'] = $this->lang->line('validdatedue');
         $this->data['price_label'] = $this->lang->line('price');
+        $this->data['third_parties_label'] = $this->lang->line('third_parties');
+        $this->data['configuration_label'] = $this->lang->line('configuration');
     }
 
 }
