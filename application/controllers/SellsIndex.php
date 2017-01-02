@@ -20,10 +20,7 @@ class SellsIndex extends MY_Controller {
 	 */
 	public function index()
 	{
-		$title = $this->lang->line('title_sell');
-                $data = array(
-                        'title' => $title 
-                );
-                $this->CallViews('SellsIndex/index.tpl',$data);
+		
+                $this->CallViews('SellsIndex/index.tpl',$this->data);
 	}
 }

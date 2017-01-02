@@ -94,7 +94,7 @@ class MY_Controller extends CI_Controller {
         $this->data['msg_var_lenght_desc']   = $this->lang->line('msg_var_lenght_desc');
         $this->data['msg_var_required_desc'] = $this->lang->line('msg_var_required_desc');
         $this->data['msg_var_nvalid_desc']   = $this->lang->line('msg_var_nvalid_desc');
-        
+        $this->data['title_sell']            = $this->lang->line('title_sell');
         $this->data['msg_ge_lenght_desc']   = $this->lang->line('msg_ge_lenght_desc');
         $this->data['msg_ge_required_desc'] = $this->lang->line('msg_ge_required_desc');
         $this->data['msg_ge_nvalid_desc']   = $this->lang->line('msg_ge_nvalid_desc');
