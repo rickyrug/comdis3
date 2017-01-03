@@ -475,3 +475,6 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2016-12-28 22:23:59
+
+ALTER TABLE `comdis`.`sells_hdr` 
+ADD COLUMN `status` VARCHAR(2) NOT NULL AFTER `type`;
