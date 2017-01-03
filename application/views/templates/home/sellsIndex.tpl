@@ -6,9 +6,8 @@
                         <a href="#" class="list-group-item disabled">
                             <h3>{$data['title_sell']}</h3>
                         </a>
-                        <a href="{$base_url}/index.php/CatalogClient" class="list-group-item">{$data['title_clients']}</a>
-                        <a href="{$base_url}/index.php/ProductPriceClient" class="list-group-item">{$data['config_prod_prices_label']}</a>
-                        <a href="{$base_url}/index.php/CatalogSupplier" class="list-group-item">{$data['title_supplier']}</a>
+                        <a href="{$base_url}/index.php/Sells" class="list-group-item">Sells Panel</a>
+                      
             </div>
             
         </div>
