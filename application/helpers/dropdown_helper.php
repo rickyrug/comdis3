@@ -27,3 +27,10 @@ function generateProductDropdownInformation($p_productList) {
     }
     return $finalarray;
 }
+
+function generateSellstypeDropdownInformation() {
+    $finalarray = array();
+    
+    $finalarray['RM'] = $this->lang->line('remission');
+    return $finalarray;
+}

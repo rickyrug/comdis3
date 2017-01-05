@@ -119,7 +119,8 @@ class MY_Controller extends CI_Controller {
         $this->data['third_parties_label'] = $this->lang->line('third_parties');
         $this->data['configuration_label'] = $this->lang->line('configuration');
         $this->data['title_purchase'] = $this->lang->line('title_purchase');
-        
+        $this->data['redirecting_label'] = $this->lang->line('redirecting');
+        $this->data['type_label'] = $this->lang->line('type');
     }
 
 }

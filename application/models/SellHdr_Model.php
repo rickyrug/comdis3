@@ -14,6 +14,7 @@
  * status = AC = Activa
  *          DE = Borrada
  *          CU = Cumplida
+ *          DR = Draft
  * 
  */
 class SellHdr_Model extends CI_Model{
@@ -51,25 +52,26 @@ class SellHdr_Model extends CI_Model{
     }
     
        public function insert_entry($p_idclient,$p_delivery_date, $p_type, $p_created_by, $p_status = null) {
-        
+        $id = null;
         $this->idclient = $p_idclient;
         $this->delivery_date = $p_delivery_date;
         $this->type = $p_type;
            
-        $this->create_by   = $p_created_by;
-        $this->create_date = standard_date('DATE_ATOM', time());
+        $this->creation_by   = $p_created_by;
+        $this->creation_date = standard_date('DATE_ATOM', time());
         $this->modification_by = null;
         $this->modification_date = null;
 
         if (!is_null($p_status)) {
             $this->status = $p_status;
         } else {
-            $this->status = 'AC';
+            $this->status = 'DR';
         }
         if ($this->db->insert($this->table, $this)) {
             $sql = $this->db->set($this)->get_compiled_insert($this->table);
             $str = $this->db->last_query();
             $err = $this->db->error();
+            $id =  $this->db->insert_id();
         } else {
             $sql = $this->db->set($this)->get_compiled_insert($this->table);
             $str = $this->db->last_query();
@@ -78,7 +80,8 @@ class SellHdr_Model extends CI_Model{
         return array(
             "query" => $sql,
             "lastquery" => $str,
-            "err" => $err
+            "err" => $err,
+            "id"  => $id
         );
     }
 

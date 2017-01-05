@@ -74,5 +74,8 @@ $lang['validdatedue'] = 'Valid date due';
 $lang['price'] = 'Price';
 $lang['third_parties'] = 'Third parties';
 $lang['configuration'] = 'Configuration';
+$lang['redirecting'] = "Redirecting";
+$lang['type'] = "Type";
+$lang['remission'] = "Remission";
 /*END general labels*/
 
