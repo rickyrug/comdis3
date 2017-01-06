@@ -19,6 +19,9 @@ class MY_Controller extends CI_Controller {
         parent::__construct();
         $lang = $this->config->item('language');
         $this->lang->load('general', $lang);
+        $this->smarty->assign('base_url', base_url());
+        $this->smarty->assign('site_url', site_url());
+        $this->smarty->assign('CI_VERSION', CI_VERSION);
         $this->data = array();
         $this->setLabels();
     }
@@ -36,9 +39,9 @@ class MY_Controller extends CI_Controller {
     }
 
     public function CallViews($p_view, $p_data = null) {
-        $this->smarty->assign('base_url', base_url());
-        $this->smarty->assign('site_url', site_url());
-        $this->smarty->assign('CI_VERSION', CI_VERSION);
+//        $this->smarty->assign('base_url', base_url());
+//        $this->smarty->assign('site_url', site_url());
+//        $this->smarty->assign('CI_VERSION', CI_VERSION);
         $p_data = $this->LoadMenu($p_data);
 
         if ($p_data != null) {

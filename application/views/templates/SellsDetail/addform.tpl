@@ -48,28 +48,28 @@
                 <tr>
                     <th>Subtotal</th>
                     <td></td>
-                    <td>0.0</td>
+                    <td><input type="text" name="undertotal" id="undertotal" value="" readonly="readonly" /></td>
                 </tr>
                 <tr>
                     <th>Descuento </th>
-                    <td>{$data['sell']->discount|string_format:"%.2f"} %</td>
-                    <td>0.0</td>
+                    <td><small>{$data['sell']->discount|string_format:"%.2f"} %</small></td>
+                    <td><input type="text" name="discounttotal" id="discounttotal" value="" readonly="readonly" /></td>
                 </tr>
                 <tr>
                     <th>Impuesto </th>
-                    <td>{$data['sell']->tax|string_format:"%.2f"} %</td>
-                    <td>0.0</td>
+                    <td><small>{$data['sell']->tax|string_format:"%.2f"} %</small></td>
+                    <td><input type="text" name="taxtotal" id="taxtotal" value="" readonly="readonly" /></td>
                 </tr>
                 <tr>
                     <th>Total</th>
                     <td></td>
-                    <td>0.0</td>
+                    <td><input type="text" name="total" id="total" value="" readonly="readonly" /></td>
                 </tr>
             </table>
         </div>
         <div class="col-md-8">
             <form id="formproductadd" action='{$base_url}/index.php/SellsDetail/addProductConfirmation'>
-                <input type="hidden" name="idsells" value="{$data['sell']->idsell}" />
+                <input type="hidden"  name="idsell" value="{$data['sell']->idsell}" />
             <table class="table table-bordered table-condensed">
                 <thead>
                     <tr>
@@ -105,17 +105,27 @@
     </div>
     <div class="row">
         <div class="col-lg-12">
-
+            <table id="tablesellsdtl" class="table table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th data-field="idsells_dtl">ID</th>
+                        <th data-field="name">Product</th>
+                        <th data-field="quantity">Quantity</th>
+                        <th data-field="price">Price</th>
+                        <th data-field="discount">Discount</th>
+                    </tr>
+                </thead>
+            </table>
         </div>
     </div>
-  
+    <div id="modeledititem" class="modal fade" tabindex="-1" role="dialog"></div>                
     <script type="text/javascript" >
 
         $(document).ready(function () {
             /*Activa el search del dropdown*/
             $("#idclient").chosen();
             $("#idproduct").chosen();
-
+            loadDtlTable();
 
 
             $('#sellsform')
@@ -225,11 +235,68 @@
         });
         
         $("#additembtn").click(function(){
+           
              var str = $("#formproductadd").serialize();
              $('#formproductadd').trigger("reset");
-             $("#idproduct").val('').trigger("chosen:updated");;
-            
+             $("#idproduct").val('').trigger("chosen:updated");
+             $.post('{$base_url}/index.php/SellsDetail/addProductConfirmation',str).done(function(data){
+
+                  refreshDtlTable();
+              }); 
+             
+              
+                
         });
+        
+        function refreshDtlTable(){
+            var request = new Object();
+            var table = $('#tablesellsdtl');
+            
+            request.idsell = $("#formproductadd input[name=idsell]").val();
+              $.post('{$base_url}/index.php/SellsDetail/getSellsItems',request).done(function(data){
+                  
+                 
+                  
+                  var result = JSON.parse(data);
+                  
+                  var onb= new Object();
+                    onb.data = result.items;
+                    table.bootstrapTable('load',onb);
+                    setSummaryInfo(result.summary.undertotal,result.summary.tax,
+                                   result.summary.discount,result.summary.total);
+              });
+        }
+        
+        $('#tablesellsdtl').on('click-row.bs.table',function(row, $element, field){
+            console.log($element);
+           $.get('{$base_url}/index.php/SellsDetail/updateViewItem',$element).done(function(data){
+               $("#modeledititem").html(data);
+               $('#modeledititem').modal('show')
+           });
+        });
+        
+        function loadDtlTable(){
+            var request = new Object();
+            var table = $('#tablesellsdtl');
+            
+            request.idsell = $("#formproductadd input[name=idsell]").val();
+              $.post('{$base_url}/index.php/SellsDetail/getSellsItems',request).done(function(data){
+                  var result = JSON.parse(data);
+                  
+                  var onb= new Object();
+                    onb.data = result.items;
+                    table.bootstrapTable(onb);
+                    setSummaryInfo(result.summary.undertotal,result.summary.tax,
+                                   result.summary.discount,result.summary.total);
+              });
+        }
+        
+        function setSummaryInfo(undertotal,taxtotal,discounttotal,total){
+            $("#undertotal").val(undertotal);
+            $("#taxtotal").val(taxtotal);
+            $("#discounttotal").val(discounttotal);
+            $("#total").val(total);
+        }
     </script>
 
 {/block}
