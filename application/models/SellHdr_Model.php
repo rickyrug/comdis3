@@ -26,6 +26,8 @@ class SellHdr_Model extends CI_Model{
     public $creation_date;
     public $modification_date;
     public $modification_by;
+    public $discount;
+    public $tax;
     
     protected $table = 'sells_hdr';
     
@@ -51,12 +53,13 @@ class SellHdr_Model extends CI_Model{
         return $query->result();
     }
     
-       public function insert_entry($p_idclient,$p_delivery_date, $p_type, $p_created_by, $p_status = null) {
+       public function insert_entry($p_idclient,$p_delivery_date, $p_type, $p_tax,$p_discount,$p_created_by, $p_status = null) {
         $id = null;
         $this->idclient = $p_idclient;
         $this->delivery_date = $p_delivery_date;
         $this->type = $p_type;
-           
+        $this->discount = $p_discount;
+        $this->tax = $p_tax;
         $this->creation_by   = $p_created_by;
         $this->creation_date = standard_date('DATE_ATOM', time());
         $this->modification_by = null;

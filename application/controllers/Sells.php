@@ -14,7 +14,8 @@
 require_once( APPPATH.'/interfaces/ICrud.php' );
 class Sells extends MY_Controller implements ICrud{
         private $user;
-
+        private $default_tax;
+        private $default_discount;
         
     public function __construct() {
         parent::__construct();
@@ -22,6 +23,8 @@ class Sells extends MY_Controller implements ICrud{
          $this->load->model('SellHdr_Model');
          $this->load->helper('dropdown');
          $this->user = 1;
+         $this->default_discount = 0;
+         $this->default_tax = 0;
     }
 
 
@@ -29,7 +32,11 @@ class Sells extends MY_Controller implements ICrud{
         $p_idclient = $_POST['idclient'];
         $p_type     = $_POST['type'];
         $p_delverydate = $_POST['delverydate'];
+        $p_tax         = $_POST['tax'];
+        $p_discount    = $_POST['discount'];
         
+        $p_discount = $this->converttoPercentage($p_discount);
+        $p_tax      = $this->converttoPercentage($p_tax);
         
         if($p_idclient === ""){
             $result['err']['code'] = 2;
@@ -38,7 +45,7 @@ class Sells extends MY_Controller implements ICrud{
             return;
         }
         
-        $result = $this->SellHdr_Model->insert_entry($p_idclient,$p_delverydate , $p_type, $this->user, $p_status = null);
+        $result = $this->SellHdr_Model->insert_entry($p_idclient,$p_delverydate , $p_type, $p_tax, $p_discount, $this->user, $p_status = null);
   
         $confirm_msg ="";
         if($result['err']['code']=== 0){
@@ -59,6 +66,8 @@ class Sells extends MY_Controller implements ICrud{
         $this->smarty->assign('customer_id',  $p_id);
         $this->smarty->assign('today',standard_date('DATE_ATOM', time()));
         $this->smarty->assign('type_options',  $this->setSellsTypes());
+        $this->smarty->assign('tax',  $this->default_tax);
+        $this->smarty->assign('discount',  $this->default_discount);
         
         $this->CallViews('Sells/addform.tpl',$this->data);
     }
@@ -93,5 +102,6 @@ class Sells extends MY_Controller implements ICrud{
         return $finalarray;
     }
 
+    
 //put your code here
 }

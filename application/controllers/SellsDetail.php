@@ -34,7 +34,8 @@ class SellsDetail extends MY_Controller implements ICrud{
         
         if(count($sell) > 0){
            $this->data['sell'] = $sell[0];
-           
+           $this->data['sell']->tax = $this->converttoNumber($this->data['sell']->tax);
+           $this->data['sell']->discount = $this->converttoNumber($this->data['sell']->discount);
            $this->smarty->assign('customer_id',  $sell[0]->idclient);
            $this->smarty->assign('typeid',  $sell[0]->type);
            $this->CallViews('SellsDetail/addform.tpl', $this->data);

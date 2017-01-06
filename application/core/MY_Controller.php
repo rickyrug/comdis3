@@ -62,6 +62,14 @@ class MY_Controller extends CI_Controller {
         echo json_encode($message);
     }
 
+    public function converttoPercentage($p_variable){
+        return $p_variable / 100;
+    }
+    
+    public function converttoNumber($p_variable){
+        return $p_variable * 100;
+    }
+    
     private function setLabels() {
 
         $this->data['title_clients'] = $this->lang->line('title_clients');
@@ -121,6 +129,9 @@ class MY_Controller extends CI_Controller {
         $this->data['title_purchase'] = $this->lang->line('title_purchase');
         $this->data['redirecting_label'] = $this->lang->line('redirecting');
         $this->data['type_label'] = $this->lang->line('type');
+        $this->data['deliverydate_label'] = $this->lang->line('deliverydate');
+        $this->data['tax_label'] = $this->lang->line('tax');
+        $this->data['discount_label'] = $this->lang->line('discount');
     }
 
 }

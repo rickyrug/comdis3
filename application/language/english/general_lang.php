@@ -77,5 +77,8 @@ $lang['configuration'] = 'Configuration';
 $lang['redirecting'] = "Redirecting";
 $lang['type'] = "Type";
 $lang['remission'] = "Remission";
+$lang['deliverydate'] = "Delivery Date";
+$lang['tax'] = "Tax";
+$lang['discount'] = "Discount";
 /*END general labels*/
 
