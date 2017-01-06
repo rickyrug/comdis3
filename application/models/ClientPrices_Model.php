@@ -41,6 +41,14 @@ class ClientPrices_Model extends CI_Model{
         return $query->result();
     }
     
+    public function find_by_productclient($p_idproduct,$p_idclient){
+        $this->db->from($this->table);
+        $this->db->where('idclient',$p_idclient);
+        $this->db->where('idproduct',$p_idproduct);
+        $query = $this->db->get();
+        return $query->result();
+    }
+    
     public function find_by_client($p_idclient){
         
         $this->db->from($this->table);

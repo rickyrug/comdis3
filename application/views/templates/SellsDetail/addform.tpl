@@ -10,6 +10,7 @@
         <form id="sellsform" action='{$base_url}/index.php/Sells/editConfirmation'>
             <div class="col-md-3">
                 <div class="form-group">
+                    <input type="hidden" name="idsells" value="{$data['sell']->idsell}" />
                     <label for="idclient">{$data['client_label']}</label>
 
                     <select id="idclient" name="idclient" class="form-control"  placeholder="{$data['client_label']}">
@@ -42,7 +43,7 @@
         </form>
     </div>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <table class="table table-bordered table-condensed">
                 <tr>
                     <th>Subtotal</th>
@@ -66,20 +67,54 @@
                 </tr>
             </table>
         </div>
+        <div class="col-md-8">
+            <form id="formproductadd" action='{$base_url}/index.php/SellsDetail/addProductConfirmation'>
+                <input type="hidden" name="idsells" value="{$data['sell']->idsell}" />
+            <table class="table table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th style="width: 50%">Product</th>
+                        <th style="width: 15%">QTY</th>
+                        <th style="width: 15%">Price</th>
+                        <th style="width: 15%">Desc</th>
+                        <th style="width: 5%"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <select id="idproduct" name="idproduct" class="form-control "  placeholder="{$data['product_label']}">
+                                <option value=""></option>
+                                {html_options options=$product_options }
+                            </select>
+                        </td>
+                        <td><input type="text" name="quantity" value="" class="form-control input-sm"/></td>
+                        <td><input type="text" id="prodprice" name="price" value="" class="form-control input-sm"/></td>
+                        <td><input type="text" name="discount" value="{$data['sell']->discount|string_format:"%.2f"}" class="form-control input-sm" readonly="readonly"/></td>
+
+                        <td>
+                            <a class="btn btn-group-xs" id="additembtn">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </form>
+        </div>
     </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <table class="table table-bordered table-condensed">
-                                
-                            </table>
-                        </div>
-                    </div>
+    <div class="row">
+        <div class="col-lg-12">
+
+        </div>
+    </div>
+  
     <script type="text/javascript" >
 
         $(document).ready(function () {
             /*Activa el search del dropdown*/
             $("#idclient").chosen();
-
+            $("#idproduct").chosen();
 
 
 
@@ -166,6 +201,35 @@
 
         });
 
-
+        
+        $('#idproduct').change(function (e) {
+            var selectedproduct = $('option:selected',this).val();
+            var selectedclient  = $('#idclient option:selected').val();
+            var request = new Object();
+            request.idproduct = selectedproduct;
+            request.idclient = selectedclient ;
+            $.post('{$base_url}/index.php/SellsDetail/getProductRecomendedPrice',request)
+            .done(function(data){
+                var obj = JSON.parse(data);
+               
+                if(obj.price_available === 'CO'){ //CONFIGURADO
+                    $("#prodprice").val(obj.validprice.price);
+                }else if(obj.price_available === 'CA'){
+                    $('#msgconfirm').removeClass('hidden');
+                    $('#msgconfirm').addClass('alert-warning');
+                    $('#msgconfirm p').text(obj.message);
+                    $("#prodprice").val(obj.validprice.sell_price);
+                }
+                
+            });
+        });
+        
+        $("#additembtn").click(function(){
+             var str = $("#formproductadd").serialize();
+             $('#formproductadd').trigger("reset");
+             $("#idproduct").val('').trigger("chosen:updated");;
+            
+        });
     </script>
+
 {/block}
