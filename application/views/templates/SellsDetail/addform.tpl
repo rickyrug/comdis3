@@ -1,5 +1,5 @@
 {block name=centralContainer}
-    <h1 class="page-header">{$data['config_prod_prices_label']}<small>{$data['add_label']}</small></h1>
+    <h1 class="page-header">{$data['title_sell']}<small>{$data['add_label']}</small></h1>
     <div id="msgconfirm" class="alert hidden" role="alert">
         <button type="button" id="close" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <p></p>
@@ -7,13 +7,13 @@
     </div>
 
     <div class="row">
-        <form id="sellsform" action='{$base_url}/index.php/Sells/editConfirmation'>
+        <form id="sellsform" action='{$base_url}/index.php/Sells/updateConfirmation'>
             <div class="col-md-3">
                 <div class="form-group">
                     <input type="hidden" name="idsells" value="{$data['sell']->idsell}" />
                     <label for="idclient">{$data['client_label']}</label>
 
-                    <select id="idclient" name="idclient" class="form-control"  placeholder="{$data['client_label']}">
+                    <select id="idclient" name="idclient" class="form-control"  placeholder="{$data['client_label']}" disabled="disabled">
                         <option value=""></option>
                         {html_options options=$client_options selected=$customer_id}
                     </select>
@@ -22,7 +22,7 @@
             <div class="col-md-3">
                 <div class="form-group ">
                     <label for="type">{$data['type_label']}</label>
-                    <select name="type" class="form-group form-control">
+                    <select name="type" class="form-group form-control" disabled="disabled">
                         <option value=""></option>
                         {html_options options=$type_options selected=$typeid}
                     </select>
@@ -30,33 +30,33 @@
             </div>
             <div class="col-md-3">
                 <div class="form-group ">
-                    <label for="delverydate">{$data['validdatedue_label']}</label>
-                    <input  type="text" class="form-control " id="validdatedue" name="delverydate" placeholder="{$data['validdatedue_label']}" value="{$data['sell']->delivery_date|date_format:"%Y-%m-%d"}">
+                    <label for="delverydate">{$data['deliverydate_label']}</label>
+                    <input  type="text" class="form-control " id="validdatedue" name="delverydate" placeholder="{$data['validdatedue_label']}" value="{$data['sell']->delivery_date|date_format:"%Y-%m-%d"}" disabled="disabled">
                 </div>
             </div>
-            <div class="col-md-3">
+          <!--  <div class="col-md-3">
                 <div class="form-group ">
                     <button id="btnsave" type="submit" class="btn btn-primary">{$data['save']}</button>
                 </div>
 
-            </div>
+            </div>-->
         </form>
     </div>
     <div class="row">
         <div class="col-md-4">
             <table class="table table-bordered table-condensed">
                 <tr>
-                    <th>Subtotal</th>
-                    <td></td>
-                    <td><input type="text" name="undertotal" id="undertotal" value="" readonly="readonly" /></td>
+                    <th style="width: 40%">Subtotal</th>
+                    <td style="width: 30%"></td>
+                    <td style="width: 30%"><input type="text" name="undertotal" id="undertotal" value="" readonly="readonly" /></td>
                 </tr>
                 <tr>
-                    <th>Descuento </th>
-                    <td><small>{$data['sell']->discount|string_format:"%.2f"} %</small></td>
+                    <th>Descuento <span id="descuentohdr" class="glyphicon glyphicon-edit"></span></th>
+                    <td >{$data['sell']->discount|string_format:"%.2f"} %</td>
                     <td><input type="text" name="discounttotal" id="discounttotal" value="" readonly="readonly" /></td>
                 </tr>
                 <tr>
-                    <th>Impuesto </th>
+                    <th>Impuesto <span class="glyphicon glyphicon-edit"></span></th>
                     <td><small>{$data['sell']->tax|string_format:"%.2f"} %</small></td>
                     <td><input type="text" name="taxtotal" id="taxtotal" value="" readonly="readonly" /></td>
                 </tr>
@@ -104,15 +104,27 @@
         </div>
     </div>
     <div class="row">
+        <div id="toolbar">
+                <div class="form-inline" role="form">
+
+                    <div class="form-group">
+                        <a href="#" id="btndeletedtl" class="btn btn-default">{$data['titledelete_registry']}</a>
+                    </div>
+                </div>
+            </div>
         <div class="col-lg-12">
-            <table id="tablesellsdtl" class="table table-bordered table-condensed">
+            <table id="tablesellsdtl" 
+                   class="table table-bordered table-condensed"
+                   data-toolbar="#toolbar"
+            >
                 <thead>
                     <tr>
+                        <th data-checkbox="true"></th>
                         <th data-field="idsells_dtl">ID</th>
                         <th data-field="name">Product</th>
-                        <th data-field="quantity">Quantity</th>
-                        <th data-field="price">Price</th>
-                        <th data-field="discount">Discount</th>
+                        <th data-field="quantity" data-editable="true">Quantity</th>
+                        <th data-field="price" data-editable="true" >Price</th>
+                        <th data-field="discount" >Discount</th>
                     </tr>
                 </thead>
             </table>
@@ -128,85 +140,7 @@
             loadDtlTable();
 
 
-            $('#sellsform')
-                    .bootstrapValidator({
-                        message: 'This value is not valid',
-                        feedbackIcons: {
-                            valid: 'glyphicon glyphicon-ok',
-                            invalid: 'glyphicon glyphicon-remove',
-                            validating: 'glyphicon glyphicon-refresh'
-                        },
-                        fields: {
-                            idclient: {
-                                message: "{$data['msg_ge_nvalid_desc']}",
-                                validators: {
-                                    notEmpty: {
-                                        message: "{$data['msg_ge_required_desc']}"
-                                    }
-                                }
 
-                            },
-                            type: {
-                                message: "{$data['msg_ge_nvalid_desc']}",
-                                validators: {
-                                    notEmpty: {
-                                        message: "{$data['msg_ge_required_desc']}"
-                                    }
-                                }
-                            },
-                            delverydate: {
-                                message: "{$data['msg_ge_nvalid_desc']}",
-                                validators: {
-                                    notEmpty: {
-                                        message: "{$data['msg_ge_required_desc']}"
-                                    },
-                                    date: {
-                                        format: 'YYYY-MM-DD',
-                                        message: 'The value is not a valid date YYYY-MM-DD'
-                                    }
-                                }
-                            }
-
-                        }
-                    })
-                    .on('success.form.bv', function (e) {
-                        e.preventDefault();
-                        var str = $("#sellsform").serialize();
-                        var action = $("#sellsform").attr('action')
-
-
-                        $.post(
-                                action,
-                                str
-                                )
-                                .fail(function () {
-
-                                    $.get('{$base_url}/index.php/Sells/getError', function (data) {
-                                        console.log(data);
-                                        alert("Error");
-                                    });
-                                })
-                                .done(function (data) {
-                                    var obj = jQuery.parseJSON(data);
-                                    console.log(obj);
-                                    if (obj.err.code === 0) {
-                                        $('#msgconfirm').removeClass('hidden');
-                                        $('#msgconfirm').addClass('alert-success');
-                                        $('#btnsave').addClass('hidden');
-
-                                        $('#msgconfirm p').text(obj.confirm_msg);
-                                        setTimeout(function () {
-                                            window.location.href = obj.redirect;
-                                        }, 2000);
-                                    } else {
-                                        $('#msgconfirm').removeClass('hidden');
-                                        $('#msgconfirm').addClass('alert-danger');
-                                        // $('#btnsave').addClass('hidden');
-
-                                        $('#msgconfirm p').text(obj.err.message);
-                                    }
-                                });
-                    });
 
 
         });
@@ -248,6 +182,23 @@
                 
         });
         
+        $("#btndeletedtl").click(function(){
+            var selected = $('#tablesellsdtl').bootstrapTable('getAllSelections');
+            var obj = new Object();
+            var request =  new Array();
+            for (var i = 0; i < selected .length; i++){
+                
+                request.push(selected[i].idsells_dtl);
+                
+            }
+            obj.idsells_dtl = request;
+            
+             $.post('{$base_url}/index.php/SellsDetail/deleteConfirmation',obj).done(function(data){
+                  console.log(data);
+  
+              });
+        });
+        
         function refreshDtlTable(){
             var request = new Object();
             var table = $('#tablesellsdtl');
@@ -267,12 +218,19 @@
               });
         }
         
-        $('#tablesellsdtl').on('click-row.bs.table',function(row, $element, field){
-            console.log($element);
-           $.get('{$base_url}/index.php/SellsDetail/updateViewItem',$element).done(function(data){
-               $("#modeledititem").html(data);
-               $('#modeledititem').modal('show')
-           });
+       
+        
+        $('#tablesellsdtl').on('editable-save.bs.table',function(row, field,$el , oldValue){            
+            console.log($el);
+            if($el[field] === ""){
+                $el[field] = oldValue;
+            }
+            
+            $.post('{$base_url}/index.php/SellsDetail/updateItemConfirmation',$el).done(function(data){
+              refreshDtlTable();
+            });
+            
+            
         });
         
         function loadDtlTable(){
@@ -297,6 +255,9 @@
             $("#discounttotal").val(discounttotal);
             $("#total").val(total);
         }
+        
+       
+
     </script>
 
 {/block}

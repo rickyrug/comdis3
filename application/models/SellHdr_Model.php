@@ -35,12 +35,27 @@ class SellHdr_Model extends CI_Model{
         parent::__construct();
     }
     
-     public function find_all_entries($p_number = null) {
+     public function find_all_entries($p_number = null,$p_status = null) {
         $query = null;
+        
+        if(!is_null($p_status)){
+            $this->db->where_in('sells_hdr.status', $p_status);
+        }
+        
         if (!is_null($p_number)) {
-            $query = $this->db->get($this->table, $p_number);
+             $this->db->select('sells_hdr.*,clients.name clientname');
+             $this->db->from($this->table);
+             $this->db->join('clients','sells_hdr.idclient = clients.idclient','INNER');
+             $this->db->order_by('sells_hdr.creation_date', 'DESC');
+             $this->db->limit($p_number);
+             $query = $this->db->get();
         } else {
-            $query = $this->db->get($this->table);
+             $this->db->select('sells_hdr.*,clients.name clientname');
+             $this->db->from($this->table);
+             $this->db->join('clients','sells_hdr.idclient = clients.idclient','INNER');
+             $this->db->order_by('sells_hdr.creation_date', 'DESC');
+             $this->db->limit(100);
+            $query = $this->db->get();
         }
         return $query->result();
     }
@@ -88,12 +103,14 @@ class SellHdr_Model extends CI_Model{
         );
     }
 
-    public function update_entry($p_idsells,$p_idclient,$p_delivery_date, $p_type, $p_modified_by,$p_status = NULL) {
+    public function update_entry($p_idsells,$p_idclient,$p_delivery_date, $p_type,$p_tax ,$p_discount,$p_modified_by,$p_status = NULL) {
 
         $data = array(
             'idclient' => $p_idclient,
             'delivery_date' =>$p_delivery_date,
             'type' =>$p_type,
+            'tax' =>$p_tax,
+            'discount' =>$p_discount,
             'modification_by' => $p_modified_by,
             'modification_date' => standard_date('DATE_ATOM', time())
         );
@@ -117,10 +134,12 @@ class SellHdr_Model extends CI_Model{
         );
     }
     
-     public function delete_entry($p_idkey){
+     public function delete_entry($p_idkey,$p_modified_by){
          
          $data = array(
-               'status' => 'DE'
+            'status' => 'DE',
+            'modification_by' => $p_modified_by,
+            'modification_date' => standard_date('DATE_ATOM', time())
          );
          
           $this->db->where('idsell', $p_idkey);

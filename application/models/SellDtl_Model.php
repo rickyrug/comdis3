@@ -44,6 +44,9 @@ class SellDtl_Model extends CI_Model{
 
         $this->db->from($this->table);
         $this->db->where('idsells_dtl', $p_key);
+        
+        
+        
         $query = $this->db->get();
         return $query->result();
     }
@@ -53,6 +56,16 @@ class SellDtl_Model extends CI_Model{
         $this->db->from($this->table);
         $this->db->join('product','sells_dtl.idproduct = product.idproduct');
         $this->db->where('idsell', $p_key);
+        $query = $this->db->get();
+        return $query->result();
+    }
+    
+    public function find_by_sellsproduct($p_sells, $p_product) {
+        $this->db->select('*');
+        $this->db->from($this->table);
+      //  $this->db->join('product','sells_dtl.idproduct = product.idproduct');
+        $this->db->where('idsell', $p_sells);
+        $this->db->where('idproduct',$p_product);
         $query = $this->db->get();
         return $query->result();
     }
@@ -118,7 +131,7 @@ class SellDtl_Model extends CI_Model{
     }
     
      public function delete_entry($p_idkey){
-        $this->db->where('idsells_dtl', $p_idkey);
+        $this->db->where_in('idsells_dtl', $p_idkey);
         $this->db->delete($this->table);
         
         return array(

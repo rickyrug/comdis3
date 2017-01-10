@@ -45,8 +45,20 @@ class SellsDetail extends MY_Controller implements ICrud{
         $p_price = $_POST['price'];
         $p_discount = $_POST['discount'];
         $p_tax      = $this->getSpecialProductTaxes($p_idproduct);
-        $result = $this->SellDtl_Model->insert_entry( $p_idsell,$p_idproduct, $p_tax,
-                                    $p_discount,$p_price,$p_quantity,$this->user);
+        
+        $existingItem = $this->existProduct($p_idsell, $p_idproduct);
+        
+        if($existingItem['exist']){
+           $p_quantity = $p_quantity +  $existingItem['item']->quantity;
+          $result = $this->SellDtl_Model->update_entry( $existingItem['item']->idsells_dtl,
+                  $p_quantity,$p_price, $p_discount, $this->user); 
+            
+        }else{
+           $result = $this->SellDtl_Model->insert_entry( $p_idsell,$p_idproduct, $p_tax,
+                                    $p_discount,$p_price,$p_quantity,$this->user); 
+        }
+        
+        
         
         $confirm_msg ="";
         if($result['err']['code']=== 0){
@@ -77,7 +89,16 @@ class SellsDetail extends MY_Controller implements ICrud{
     }
 
     public function deleteConfirmation() {
+        $p_idsells = $_POST['idsells_dtl'];
         
+        $result = $this->SellDtl_Model->delete_entry($p_idsells);
+        
+        $confirm_msg ="";
+        if($result['err']['code']=== 0){
+            $confirm_msg = sprintf($this->lang->line('deleteconfirm_registry'),2);
+        }
+        $result['confirm_msg'] = $confirm_msg;
+        echo json_encode($result);
     }
 
     public function deleteView($p_id) {
@@ -92,21 +113,27 @@ class SellsDetail extends MY_Controller implements ICrud{
         
     }
 
+    public function updateItemConfirmation(){
+        $p_idsellsdtlitem = $_POST['idsells_dtl'];
+        $p_editquantity   = $_POST['quantity'];
+        $p_editprice      = $_POST['price'];
+        $p_editdiscount    = $_POST['discount'];
+        $result = $this->SellDtl_Model->update_entry( $p_idsellsdtlitem,
+                  $p_editquantity ,$p_editprice , $this->converttoPercentage($p_editdiscount), $this->user);
+        
+        if($result['err']['code']=== 0){
+            $confirm_msg = sprintf($this->lang->line('editconfirm_registy'),$p_idsellsdtlitem);
+        }
+        $result['confirm_msg'] = $confirm_msg;
+        echo json_encode($result);
+    }
+    
     public function updateView($p_id) {
     // echo $smarty->fetch('SellsDetail/editdtlitem.tpl');
     }
      public function updateViewItem() {
-      $idsellsdtl =   $_GET['idsells_dtl'];
-      $product    =   $_GET['name']; //product name
-      $quantity    =   $_GET['quantity']; //quantity
-      $price   =   $_GET['price']; //quantity
-      
-      $this->smarty->assign('idselldtl',$idsellsdtl);
-      $this->smarty->assign('idproduct',$product );
-      $this->smarty->assign('quantity',$quantity );
-      $this->smarty->assign('price',$price);
-     echo $this->smarty->fetch('SellsDetail/editdtlitem.tpl');
-    }
+        echo $this->smarty->fetch('SellsDetail/editdiscount.tpl');
+     }
     public function getSellsItems(){
        
        $result = array();
@@ -174,8 +201,22 @@ class SellsDetail extends MY_Controller implements ICrud{
         $summary['discount']   = '$'.number_format($discount, 2); 
         $taxtotal = ($undertotal - $discount) * $taxper;
         $summary['tax']        =  '$'.number_format($taxtotal,2);
-        $total = $undertotal -$discount - $taxtotal;
+        $total = $undertotal -$discount + $taxtotal;
         $summary['total'] = '$'.number_format($total,2);
         return  $summary;
+    }
+    
+    private function existProduct($p_idsells, $p_idproduct){
+       $existingItem = array();
+       $result = $this->SellDtl_Model->find_by_sellsproduct($p_idsells,$p_idproduct);
+       
+       if(count($result)>0){
+           $existingItem['exist'] = true;
+           $existingItem['item'] = $result[0];
+       }else{
+            $existingItem['exist'] = false;
+       }
+       
+       return $existingItem;
     }
 }
