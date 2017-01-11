@@ -13,6 +13,9 @@ function pdf_create($html, $filename = '', $stream = TRUE) {
 
     $dompdf = new DOMPDF();
     $dompdf->load_html($html);
+    
+   $dompdf->set_paper('folio', 'portrait');
+    
     $dompdf->render();
     if ($stream) {
         $dompdf->stream($filename . ".pdf");
