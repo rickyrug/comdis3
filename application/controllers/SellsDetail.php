@@ -24,7 +24,7 @@ class SellsDetail extends MY_Controller implements ICrud{
         $this->load->model('ClientPrices_Model');
         $this->load->model('SellDtl_Model');
         $this->load->helper('dropdown');
-        
+        $this->load->helper(array('dompdf', 'file'));
         $clientsList = $this->Client_Model->find_all_entries();
         $productList = $this->Product_Model->find_all_entries();
         $this->smarty->assign('client_options',generateClientsDropdownInformation($clientsList));
@@ -36,6 +36,14 @@ class SellsDetail extends MY_Controller implements ICrud{
     
     public function addConfirmation() {
         
+    }
+    
+    public function printpage(){
+
+     // page info here, db calls, etc.     
+     $html = "<h3>popo</h3>";
+     pdf_create($html, 'filename');
+
     }
 
      public function addProductConfirmation() {

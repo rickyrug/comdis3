@@ -34,12 +34,12 @@
                     <input  type="text" class="form-control " id="validdatedue" name="delverydate" placeholder="{$data['validdatedue_label']}" value="{$data['sell']->delivery_date|date_format:"%Y-%m-%d"}" disabled="disabled">
                 </div>
             </div>
-          <!--  <div class="col-md-3">
+            <div class="col-md-3">
                 <div class="form-group ">
-                    <button id="btnsave" type="submit" class="btn btn-primary">{$data['save']}</button>
+                    <a href="{$base_url}/index.php/SellsDetail/printpage">Print</a>
                 </div>
 
-            </div>-->
+            </div>
         </form>
     </div>
     <div class="row">
